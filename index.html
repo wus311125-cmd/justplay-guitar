@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just Play The Guitar — 結他課程 · 指彈 · 伴奏 · 樂理</title>
+<meta name="description" content="結他課程 ｜指彈 ｜ 伴奏 ｜樂理 ｜學結他。小組班、個人班、試堂。JP 結他自家手工品牌零售。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#0E0D0B;
+  --surface:#17140F;
+  --surface-2:#1E1912;
+  --line:#2C251A;
+  --accent:#C89B5A;
+  --accent-soft:rgba(200,155,90,.14);
+  --text:#F0E9DD;
+  --muted:#8A8377;
+  --wood:#6B4F2A;
+  --serif:'Playfair Display','Noto Serif TC',serif;
+  --sans:'Noto Sans TC',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --pad:clamp(1.25rem,5vw,4rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.75;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:var(--accent);color:#0E0D0B}
+
+/* ============ NAV ============ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem var(--pad);background:rgba(14,13,11,.82);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+nav.scrolled{border-bottom-color:var(--line);background:rgba(14,13,11,.95)}
+.brand{display:flex;align-items:center;gap:.65rem}
+.brand-mark{width:10px;height:10px;background:var(--accent);transform:rotate(45deg);flex-shrink:0}
+.brand-name{font-family:var(--serif);font-size:1.05rem;letter-spacing:.04em;font-weight:600}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:.82rem;letter-spacing:.14em;color:var(--muted);transition:color .25s;position:relative}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--accent);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.btn-dm{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1.2rem;border:1px solid var(--accent);color:var(--accent);font-size:.82rem;letter-spacing:.12em;transition:background .25s,color .25s}
+.btn-dm:hover{background:var(--accent);color:#0E0D0B}
+.menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer;padding:.3rem}
+
+/* ============ HERO ============ */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:calc(5rem + var(--pad)) var(--pad) var(--pad);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 75% 35%,rgba(200,155,90,.07),transparent 65%),radial-gradient(ellipse 40% 40% at 15% 80%,rgba(107,79,42,.12),transparent 60%);pointer-events:none}
+.hero-inner{position:relative;max-width:1100px}
+.hero .tag{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.16em;color:var(--accent);margin-bottom:2rem;padding:.45rem 1rem;border:1px solid var(--line)}
+.hero .tag .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.6rem,7vw,5.2rem);line-height:1.12;letter-spacing:.01em}
+.hero h1 .accent{color:var(--accent);font-style:italic}
+.hero-sub{font-size:clamp(.95rem,2vw,1.2rem);color:var(--muted);margin-top:1.6rem;letter-spacing:.05em;max-width:36rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.8rem}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 2.2rem;background:var(--accent);color:#0E0D0B;font-size:.9rem;letter-spacing:.1em;font-weight:500;transition:transform .2s,box-shadow .25s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(200,155,90,.25)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 2.2rem;border:1px solid var(--line);color:var(--text);font-size:.9rem;letter-spacing:.1em;transition:border-color .25s,color .25s}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:2.5rem;margin-top:4.5rem;padding-top:2rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--muted)}
+.hero-meta b{display:block;font-family:var(--sans);font-weight:400;color:var(--text);font-size:.9rem;letter-spacing:.02em;margin-top:.3rem}
+
+/* ============ SECTION BASE ============ */
+section{padding:clamp(5rem,10vw,8rem) var(--pad);position:relative}
+.section-label{font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;color:var(--accent);margin-bottom:1.2rem}
+.section-title{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.2;margin-bottom:1.2rem}
+.section-desc{color:var(--muted);max-width:36rem;font-size:1rem;margin-bottom:3.5rem}
+
+/* ============ COURSES ============ */
+#courses{background:var(--surface)}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.course-card{background:var(--surface-2);border:1px solid var(--line);padding:2.5rem 2.2rem;display:flex;flex-direction:column;transition:border-color .3s,transform .3s}
+.course-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.course-card .num{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.16em}
+.course-card h3{font-family:var(--serif);font-size:1.5rem;font-weight:600;margin:.6rem 0 1rem}
+.course-price{font-family:var(--serif);font-size:1.9rem;color:var(--accent);margin-bottom:1.4rem}
+.course-price small{font-family:var(--sans);font-size:.78rem;color:var(--muted);letter-spacing:.06em}
+.course-card ul{list-style:none;margin-bottom:2rem}
+.course-card li{padding:.5rem 0 .5rem 1.3rem;position:relative;font-size:.92rem;color:#D6CFC0}
+.course-card li::before{content:'—';position:absolute;left:0;color:var(--accent);opacity:.8}
+.course-card .btn-card{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;padding:.85rem 1.6rem;border:1px solid var(--accent);color:var(--accent);font-size:.85rem;letter-spacing:.12em;transition:background .25s,color .25s}
+.course-card .btn-card:hover{background:var(--accent);color:#0E0D0B}
+.course-content{margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--line)}
+.course-content h4{font-family:var(--serif);font-size:1.1rem;margin-bottom:1.4rem;color:var(--text)}
+.content-tags{display:flex;flex-wrap:wrap;gap:.7rem}
+.ctag{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;color:var(--muted);border:1px solid var(--line);padding:.5rem 1.1rem;transition:border-color .25s,color .25s}
+.ctag:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ============ SHOP ============ */
+.shop-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:3rem}
+.shop-head .section-desc{margin-bottom:0}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem}
+.product{background:var(--surface);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;transition:border-color .3s,transform .3s}
+.product:hover{border-color:var(--accent);transform:translateY(-4px)}
+.product-photo{aspect-ratio:4/3;background:linear-gradient(135deg,#241C12,#17140F 55%,#2A2116);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+/* 真實 IG 相片:衹要喺 <img> 填 data-real-src,JS 會幫你換入真實相,並隱藏漸層 */
+.product-photo .silhouette{color:rgba(200,155,90,.22);font-size:4rem;line-height:1;user-select:none}
+.product-photo img.real-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;background:var(--surface)}
+.product-body{padding:1.8rem 1.6rem 2rem;display:flex;flex-direction:column;flex:1}
+.product-body .model{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;color:var(--accent)}
+.product-body h3{font-family:var(--serif);font-size:1.25rem;font-weight:600;margin:.5rem 0 .4rem}
+.product-body .price{font-family:var(--serif);font-size:1.4rem;color:var(--accent);margin-bottom:.8rem}
+.product-body .price small{font-family:var(--sans);font-size:.7rem;color:var(--muted);letter-spacing:.05em}
+.product-body p{font-size:.88rem;color:#C9C1B2;margin-bottom:1.4rem;line-height:1.7}
+.spec-list{list-style:none;margin-bottom:1.6rem;border-top:1px solid var(--line)}
+.spec-list li{display:flex;justify-content:space-between;gap:1rem;padding:.48rem 0;border-bottom:1px solid rgba(44,37,26,.55);font-size:.78rem}
+.spec-list .k{color:var(--muted);letter-spacing:.04em}
+.spec-list .v{color:var(--text);text-align:right;font-family:var(--sans)}
+.product .btn-card{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;padding:.8rem 1.4rem;border:1px solid var(--accent);color:var(--accent);font-size:.83rem;letter-spacing:.12em;transition:background .25s,color .25s}
+.product .btn-card:hover{background:var(--accent);color:#0E0D0B}
+
+/* ============ INTERACT (留言密語) ============ */
+#interact{background:linear-gradient(180deg,var(--bg),#131009 60%,var(--bg));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.interact-wrap{max-width:760px;margin:0 auto;text-align:center}
+.interact-wrap .quote{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,3.5vw,2.3rem);color:var(--text);line-height:1.5;margin:1.5rem 0 1rem}
+.interact-wrap .secret{font-family:var(--mono);color:var(--accent);letter-spacing:.08em;font-size:.9rem}
+.interact-wrap p{color:var(--muted);font-size:.95rem;max-width:30rem;margin:1.2rem auto 0}
+.secret-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;margin-top:2.6rem}
+.secret-card{border:1px solid var(--line);padding:1.5rem 2rem;min-width:200px;background:var(--surface)}
+.secret-card .sc-key{font-family:var(--serif);font-size:1.6rem;color:var(--accent)}
+.secret-card .sc-desc{font-size:.8rem;color:var(--muted);margin-top:.4rem;letter-spacing:.04em}
+
+/* ============ SIGNUP ============ */
+#signup{background:var(--surface)}
+.signup-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:start}
+.signup-info h3{font-family:var(--serif);font-size:1.6rem;font-weight:600;margin-bottom:1.2rem}
+.info-block{margin-bottom:1.8rem}
+.info-block .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;color:var(--accent);margin-bottom:.4rem}
+.info-block .v{font-size:.95rem;color:#D6CFC0;line-height:1.7}
+.form-card{background:var(--surface-2);border:1px solid var(--line);padding:2.2rem}
+.form-card h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin-bottom:.6rem}
+.form-card .form-intro{font-size:.85rem;color:var(--muted);margin-bottom:1.8rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.form-group{margin-bottom:1.1rem}
+.form-group label{display:block;font-size:.78rem;letter-spacing:.08em;color:var(--muted);margin-bottom:.45rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;min-height:50px;border-radius:2px;background:#131008;border:1px solid var(--line);color:var(--text);padding:.75rem 1rem;font-family:var(--sans);font-size:.95rem;line-height:1.5;transition:border-color .2s}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#5E584E}
+.radios{display:flex;flex-wrap:wrap;gap:.6rem}
+.pill{position:relative;display:inline-flex}
+.pill input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.pill span{display:inline-flex;align-items:center;padding:.55rem 1.2rem;border:1px solid var(--line);font-size:.82rem;letter-spacing:.05em;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.pill input:checked + span{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.pill input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+.btn-submit{width:100%;min-height:52px;background:var(--accent);color:#0E0D0B;border:none;font-family:var(--sans);font-size:.95rem;letter-spacing:.14em;font-weight:500;cursor:pointer;margin-top:.5rem;transition:transform .2s,box-shadow .25s}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(200,155,90,.2)}
+.form-note{font-size:.74rem;color:var(--muted);text-align:center;margin-top:1rem;letter-spacing:.04em}
+.form-success{display:none;text-align:center;padding:2.5rem 1rem;border:1px solid var(--accent);background:var(--accent-soft)}
+.form-success.show{display:block}
+.form-success .tick{font-family:var(--serif);font-size:2.2rem;color:var(--accent);margin-bottom:.8rem}
+.form-success h4{font-family:var(--serif);font-size:1.3rem;margin-bottom:.6rem}
+.form-success p{color:var(--muted);font-size:.9rem}
+.form-success a{color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:1px}
+#signup .form-card form:has(.form-success.show) > *:not(.form-success){display:none}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem}
+.footer-brand{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);letter-spacing:.04em}
+.footer-links{display:flex;gap:2rem;list-style:none}
+.footer-links a{font-size:.82rem;letter-spacing:.1em;color:var(--muted);transition:color .25s}
+.footer-links a:hover{color:var(--accent)}
+.footer-copy{width:100%;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:#5E584E;text-align:center;margin-top:.5rem}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:860px){
+  .menu-btn{display:block}
+  .nav-links{position:fixed;top:0;right:0;bottom:0;width:min(78vw,320px);flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:1.6rem;padding:6rem 2.5rem;background:var(--surface-2);border-left:1px solid var(--line);transform:translateX(100%);transition:transform .35s ease}
+  .nav-links.open{transform:none}
+  .nav-links li{width:100%}
+  .signup-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .hero-meta{gap:1.5rem}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav id="topnav">
+  <a class="brand" href="#top">
+    <span class="brand-mark"></span>
+    <span class="brand-name">Just Play The Guitar</span>
+  </a>
+  <ul class="nav-links" id="navlinks">
+    <li><a href="#courses">課程</a></li>
+    <li><a href="#shop">商品</a></li>
+    <li><a href="#signup">報名</a></li>
+    <li><a class="btn-dm" href="https://www.instagram.com/justplaythe_guitar/" target="_blank" rel="noopener">DM 試堂</a></li>
+  </ul>
+  <button class="menu-btn" id="menubtn" aria-label="開啓選單" aria-expanded="false">☰</button>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <span class="tag"><span class="dot"></span> 收生中 · 試堂可約</span>
+    <h1>Just Play<br>The <span class="accent">Guitar</span></h1>
+    <p class="hero-sub">結他課程 ｜ 指彈 ｜ 伴奏 ｜ 樂理 ｜ 編譜。新手到進階，手把手帶你彈出第一首歌。</p>
+    <div class="hero-actions">
+      <a href="#signup" class="btn-primary">開始試堂</a>
+      <a href="#shop" class="btn-ghost">睇結他</a>
+    </div>
+    <div class="hero-meta">
+      <div>課程地點<b>牛頭角 · 1208 Studio</b></div>
+      <div>小組班<b>3–4 人小班教學</b></div>
+      <div>程度<b>新手至進階</b></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ COURSES ============ -->
+<section id="courses">
+  <div class="section-label">COURSES — 課程</div>
+  <h2 class="section-title reveal">搵啱你嘅上堂方式</h2>
+  <p class="section-desc reveal">唔理你係零基礎想入門，定係自學到平台期想突破，都有適合你嘅班。</p>
+
+  <div class="courses-grid">
+    <div class="course-card reveal">
+      <span class="num">01</span>
+      <h3>小組班</h3>
+      <div class="course-price">$1080<small> / 8 堂</small></div>
+      <ul>
+        <li>3–4 人小班，氣氛輕鬆</li>
+        <li>學習伴奏 chord、睇譜</li>
+        <li>入門 Fingerstyle 歌</li>
+        <li>平日、週末均有班，一星期一堂</li>
+        <li>手把手教學，仲識到同好</li>
+      </ul>
+      <a href="#signup" class="btn-card">報名留位</a>
+    </div>
+
+    <div class="course-card reveal">
+      <span class="num">02</span>
+      <h3>個人班</h3>
+      <div class="course-price">彈性收費<small> 按程度 / 堂數</small></div>
+      <ul>
+        <li>本身有底、想快速上手進步</li>
+        <li>度身訂造學習進度</li>
+        <li>針對你的弱項逐個擊破</li>
+        <li>時間彈性，配合你生活</li>
+      </ul>
+      <a href="#signup" class="btn-card">查詢詳情</a>
+    </div>
+  </div>
+
+  <div class="course-content reveal">
+    <h4>課程內容</h4>
+    <div class="content-tags">
+      <span class="ctag">指彈 Fingerstyle</span>
+      <span class="ctag">伴奏 Rhythm / Skill</span>
+      <span class="ctag">樂理</span>
+      <span class="ctag">寫歌 / 編 Tab</span>
+      <span class="ctag">試堂</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOP ============ -->
+<section id="shop">
+  <div class="shop-head">
+    <div>
+      <div class="section-label">SHOP — 自家品牌結他</div>
+      <h2 class="section-title reveal">JP 結他 · 手工製作</h2>
+    </div>
+    <p class="section-desc reveal">結他零售 ｜ 自家手工品牌。精選木材、細緻鑲嵌、專業音色。由新手第一支到專業收藏。</p>
+  </div>
+
+  <div class="shop-grid">
+    <!-- ===== 產品 1: Randon AS-GC+ ===== -->
+    <article class="product reveal">
+      <div class="product-photo" data-photo-slot="jp_1">
+        <span class="silhouette">♫</span>
+        <img class="real-photo" alt="Randon AS-GC+ 單板木吉他" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      </div>
+      <div class="product-body">
+        <span class="model">RANDON AS-GC+</span>
+        <h3>41吋 GA 桶 缺角單板木吉他</h3>
+        <div class="price">$1,399 <small>起</small></div>
+        <p>外型型格，指板「靈蛇」鑲嵌非常吸睛。歐洲雲杉單板面板，音色比合板更共鳴飽滿，手感易撳，適合新手練習首選。</p>
+        <ul class="spec-list">
+          <li><span class="k">桶型</span><span class="v">41吋 Grand Auditorium 缺角</span></li>
+          <li><span class="k">面板</span><span class="v">歐洲雲杉單板</span></li>
+          <li><span class="k">背側板</span><span class="v">桃花芯木</span></li>
+          <li><span class="k">指板記號</span><span class="v">精緻「靈蛇」鑲嵌</span></li>
+          <li><span class="k">配件</span><span class="v">琴袋、撥片、調音器</span></li>
+        </ul>
+        <a class="btn-card" href="https://www.instagram.com/jp_guitarstudio_hk/" target="_blank" rel="noopener">查詢庫存</a>
+      </div>
+    </article>
+
+    <!-- ===== 產品 2: Randon RG-19SAC ===== -->
+    <article class="product reveal">
+      <div class="product-photo" data-photo-slot="jp_2">
+        <span class="silhouette">♫</span>
+        <img class="real-photo" alt="Randon RG-19SAC 全單板木吉他" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      </div>
+      <div class="product-body">
+        <span class="model">RANDON RG-19SAC</span>
+        <h3>41吋 GA 桶 缺角 全單板吉他</h3>
+        <div class="price">請 DM 查詢 <small>現貨價</small></div>
+        <p>全單板配置，音色共鳴厚實飽滿。指板「螢火蟲」鑲嵌細緻度極高，高端玫瑰木紋理配上專業做工，外型與音色兼備。</p>
+        <ul class="spec-list">
+          <li><span class="k">桶型</span><span class="v">41吋 GA 桶缺角</span></li>
+          <li><span class="k">面板</span><span class="v">歐洲雲杉單板</span></li>
+          <li><span class="k">背側板</span><span class="v">印度玫瑰木單板</span></li>
+          <li><span class="k">指板記號</span><span class="v">精緻「螢火蟲」鑲嵌</span></li>
+          <li><span class="k">特色</span><span class="v">全單板 · 玫瑰木紋理</span></li>
+        </ul>
+        <a class="btn-card" href="https://www.instagram.com/jp_guitarstudio_hk/" target="_blank" rel="noopener">查詢庫存</a>
+      </div>
+    </article>
+
+    <!-- ===== 產品 3: 手工結他系列 ===== -->
+    <article class="product reveal">
+      <div class="product-photo" data-photo-slot="jp_3">
+        <span class="silhouette">♫</span>
+        <img class="real-photo" alt="JP 自家手工結他" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      </div>
+      <div class="product-body">
+        <span class="model">JP HANDMADE</span>
+        <h3>自家手工結他系列</h3>
+        <div class="price">訂製查詢</div>
+        <p>精選德國雲杉、印度玫瑰木、非洲桃花芯。650mm 弦長、44mm 弦枕、彩貝鑲嵌——每一把都係用心手工製作嘅樂器。</p>
+        <ul class="spec-list">
+          <li><span class="k">面板</span><span class="v">精選德國雲杉</span></li>
+          <li><span class="k">背側</span><span class="v">精選印度玫瑰木</span></li>
+          <li><span class="k">琴頸</span><span class="v">精選非洲桃花芯</span></li>
+          <li><span class="k">指板</span><span class="v">烏木 · 彩貝鑲嵌</span></li>
+          <li><span class="k">弦長</span><span class="v">650mm</span></li>
+        </ul>
+        <a class="btn-card" href="https://www.instagram.com/jp_guitarstudio_hk/" target="_blank" rel="noopener">訂製查詢</a>
+      </div>
+    </article>
+
+    <!-- ===== 產品 4: 更多型號 ===== -->
+    <article class="product reveal">
+      <div class="product-photo" data-photo-slot="jp_4">
+        <span class="silhouette">…</span>
+        <img class="real-photo" alt="更多結他型號" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      </div>
+      <div class="product-body">
+        <span class="model">MORE</span>
+        <h3>更多型號</h3>
+        <div class="price">持續更新</div>
+        <p>陸續上架更多結他型號。想要嘅款冇出現？直接 DM 我哋，我哋幫你搵。</p>
+        <ul class="spec-list">
+          <li><span class="k">零售</span><span class="v">各品牌木結他</span></li>
+          <li><span class="k">服務</span><span class="v">推薦、試彈、保養</span></li>
+          <li><span class="k">支援</span><span class="v">新手選購建議</span></li>
+        </ul>
+        <a class="btn-card" href="https://www.instagram.com/jp_guitarstudio_hk/" target="_blank" rel="noopener">DM 查詢</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ INTERACT ============ -->
+<section id="interact">
+  <div class="interact-wrap reveal">
+    <div class="section-label">PLAY ALONG — 一齊玩</div>
+    <p class="quote">「留言攞譜，齊齊彈。」</p>
+    <p>喺 IG 教學帖留言指定密語，我哋會將 PDF 譜發俾你練習。</p>
+    <div class="secret-cards">
+      <div class="secret-card">
+        <div class="sc-key">留言「5」</div>
+        <div class="sc-desc">入副歌五個過渡句子 PDF</div>
+      </div>
+      <div class="secret-card">
+        <div class="sc-key">留言「冬天」</div>
+        <div class="sc-desc">Gordon Flanders 冬季譜</div>
+      </div>
+    </div>
+    <p class="secret" style="margin-top:2rem;font-family:var(--sans);letter-spacing:.05em">想攞譜？去 IG ➜ <a href="https://www.instagram.com/justplaythe_guitar/" target="_blank" rel="noopener" style="color:var(--accent)">@justplaythe_guitar</a></p>
+  </div>
+</section>
+
+<!-- ============ SIGNUP ============ -->
+<section id="signup">
+  <div class="section-label">SIGN UP — 報名 / 查詢</div>
+  <h2 class="section-title reveal">約個試堂，感受吓</h2>
+  <p class="section-desc reveal">填低資料，我哋會盡快經 IG DM / WhatsApp 同你確認時間。</p>
+
+  <div class="signup-grid">
+    <div class="signup-info reveal">
+      <h3>上堂地點</h3>
+      <div class="info-block">
+        <div class="k">STUDIO</div>
+        <div class="v">牛頭角創業街 36 號 華基中心 1208 Studio</div>
+      </div>
+      <div class="info-block">
+        <div class="k">上堂時間</div>
+        <div class="v">一至日皆可，各班一星期一堂<br>（小組班 3–4 人，個人班彈性約時間）</div>
+      </div>
+      <div class="info-block">
+        <div class="k">課程內容</div>
+        <div class="v">指彈 Fingerstyle ｜ 伴奏 Rhythm / Skill ｜ 樂理 ｜ 寫歌 / 編 Tab</div>
+      </div>
+      <div class="info-block">
+        <div class="k">適合</div>
+        <div class="v">任何程度學生、零基礎新手</div>
+      </div>
+    </div>
+
+    <div class="form-card reveal">
+      <h3>試堂 / 課程查詢</h3>
+      <p class="form-intro">留下資料，我哋會經 IG DM 同你確認。</p>
+      <form id="signupForm" novalidate>
+        <div class="form-group">
+          <label for="name">姓名</label>
+          <input id="name" type="text" placeholder="點稱呼你" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">電話 / IG handle</label>
+            <input id="phone" type="text" placeholder="方便我哋聯絡你" required>
+          </div>
+          <div class="form-group">
+            <label for="level">程度</label>
+            <select id="level" required>
+              <option value="" disabled selected>揀選程度</option>
+              <option>零基礎新手</option>
+              <option>有底子（自學過）</option>
+              <option>中級</option>
+              <option>想突破平台期</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>心儀課程</label>
+          <div class="radios">
+            <label class="pill"><input type="radio" name="course" value="小組班" checked><span>小組班</span></label>
+            <label class="pill"><input type="radio" name="course" value="個人班"><span>個人班</span></label>
+            <label class="pill"><input type="radio" name="course" value="試堂"><span>試堂</span></label>
+            <label class="pill"><input type="radio" name="course" value="買結他"><span>買結他</span></label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="time">心儀時段</label>
+            <select id="time" required>
+              <option value="" disabled selected>揀選時段</option>
+              <option>平日日間</option>
+              <option>平日夜晚</option>
+              <option>週末</option>
+              <option>再約</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="want">想學咩</label>
+            <select id="want">
+              <option value="" disabled selected>揀選方向</option>
+              <option>指彈 Fingerstyle</option>
+              <option>伴奏 Chord</option>
+              <option>樂理</option>
+              <option>編譜 / 寫歌</option>
+              <option>都未諗定</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="msg">補充（可選）</label>
+          <textarea id="msg" placeholder="想問嘅嘢 / 目標"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">提交查詢</button>
+        <p class="form-note">提交後我哋會喺 IG DM 覆你，唔使你等。</p>
+
+        <div class="form-success" id="formSuccess">
+          <div class="tick">✓</div>
+          <h4>收到你嘅查詢！</h4>
+          <p>我哋會盡快經 IG DM 覆你。想即刻傾？<br>直接 DM &#64;<a href="https://www.instagram.com/justplaythe_guitar/" target="_blank" rel="noopener">justplaythe_guitar</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-brand">
+    <span class="brand-mark"></span>
+    <span>Just Play The Guitar</span>
+  </div>
+  <ul class="footer-links">
+    <li><a href="https://www.instagram.com/justplaythe_guitar/" target="_blank" rel="noopener">課程 IG</a></li>
+    <li><a href="https://www.instagram.com/jp_guitarstudio_hk/" target="_blank" rel="noopener">商品 IG</a></li>
+    <li><a href="#signup">報名</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Just Play The Guitar · JP 結他自家手工品牌</p>
+</footer>
+
+<script>
+/* ============ NAV SCROLL STATE ============ */
+const nav = document.getElementById('topnav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ============ MOBILE MENU ============ */
+const menuBtn = document.getElementById('menubtn');
+const navLinks = document.getElementById('navlinks');
+const toggleMenu = (force) => {
+  const open = typeof force === 'boolean' ? force : !navLinks.classList.contains('open');
+  navLinks.classList.toggle('open', open);
+  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  menuBtn.textContent = open ? '✕' : '☰';
+};
+menuBtn.addEventListener('click', () => toggleMenu());
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+/* ============ REVEAL ON SCROLL ============ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, {threshold: .12, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ============ SWAP REAL PHOTOS ============ */
+/*
+  放真實相：喺下面 MAP 填返 IG 圖片 URL（或者之後俾我哋替換）。
+  揾到相之後,JS 自動將 <img> src 設做真實 URL,再 fade-in,
+  並隱藏底層嘅純色漸層,相片就係「特別放嘅一張」。
+*/
+const PHOTO_MAP = {
+  // 'jp_1': 'https://scontent.cdninstagram.com/...jpg',
+  // 'jp_2': 'https://scontent.cdninstagram.com/...jpg',
+  // 'jp_3': 'https://scontent.cdninstagram.com/...jpg',
+  // 'jp_4': 'https://scontent.cdninstagram.com/...jpg',
+};
+document.querySelectorAll('[data-photo-slot]').forEach(slot => {
+  const key = slot.dataset.photoSlot;
+  const url = PHOTO_MAP[key];
+  if (!url) return;
+  const img = slot.querySelector('img.real-photo');
+  if (!img) return;
+  img.addEventListener('load', () => { img.style.opacity = '1'; slot.querySelector('.silhouette').style.opacity = '0'; });
+  img.src = url;
+});
+
+/* ============ FORM SUBMIT → SUCCESS ============ */
+const form = document.getElementById('signupForm');
+const success = document.getElementById('formSuccess');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const course = (form.querySelector('input[name="course"]:checked') || {}).value || '';
+  const level = document.getElementById('level').value;
+  const time = document.getElementById('time').value;
+  const want = document.getElementById('want').value;
+  const msg = document.getElementById('msg').value.trim();
+
+  if (!name || !phone || !level || !time) {
+    alert('請填低姓名、聯絡、程度同時間先提交 🙏');
+    return;
+  }
+
+  // 儲低本地（demo）：正式版可改為送去 Google Sheet / 電郵
+  try {
+    const rec = { name, phone, course, level, time, want, msg, ts: new Date().toISOString() };
+    const all = JSON.parse(localStorage.getItem('jptg_signups') || '[]');
+    all.push(rec);
+    localStorage.setItem('jptg_signups', JSON.stringify(all));
+  } catch (_) {}
+
+  // 同時開 IG DM，方便佢哋即刻傾
+  success.classList.add('show');
+  form.querySelectorAll('input,select,textarea,button').forEach(el => { el.disabled = true; });
+});
+</script>
+</body>
+</html>
