@@ -51,29 +51,34 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
 :is(button,a,summary,input,select,textarea):focus-visible{outline:3px dashed var(--ballpoint-blue);outline-offset:7px}
 
 /* ============ NAV ============ */
-.page-header{flex-wrap:wrap;justify-content:space-between;align-items:center;gap:22px;display:flex;padding:18px 0 0}
-.brand{font-family:var(--marker);align-items:center;gap:12px;font-size:clamp(30px,4vw,43px);font-weight:700;display:flex;transform:rotate(-2deg);text-decoration:none}
+.page-header{flex-wrap:wrap;justify-content:space-between;align-items:center;gap:22px;display:flex;padding:22px 0 34px}
+.brand{font-family:var(--marker);align-items:center;gap:12px;font-size:clamp(28px,3.4vw,40px);font-weight:700;display:flex;transform:rotate(-2deg);text-decoration:none}
 .brand:hover{color:var(--pencil)}
-.brand-mark{width:38px;color:var(--marker-red);transform:rotate(90deg)}
-nav{width:100%;margin-top:14px}
-nav ul{justify-content:space-between;gap:12px;padding:0;font-size:21px;list-style:none;display:flex;flex-wrap:wrap}
+.brand-mark{width:34px;color:var(--marker-red);transform:rotate(90deg)}
+nav{width:auto;margin-top:14px}
+nav ul{justify-content:flex-end;gap:18px 34px;padding:0;font-size:23px;list-style:none;display:flex;flex-wrap:wrap}
 nav li{transform:rotate(.6deg)}
 nav li:nth-child(2){transform:rotate(-1.2deg)}
 nav li:nth-child(3){transform:rotate(.8deg)}
-nav a{text-decoration:none;position:relative;padding-bottom:6px}
+nav a{text-decoration:none;position:relative;padding-bottom:7px;color:var(--pencil);font-weight:400}
 nav a:after{content:"";border-bottom:1.8px solid var(--pencil);border-radius:21% 7% 39% 60%;width:100%;height:5px;position:absolute;bottom:0;left:0;transform:rotate(-2deg)}
 nav a:hover{color:var(--marker-red)}
 nav a:hover:after{border-color:var(--marker-red)}
 
 /* ============ HERO ============ */
-.hero{padding:44px 0 30px;position:relative}
-.hero h1{font-size:clamp(52px,13vw,122px);line-height:1.16;transform:rotate(-1deg);margin-top:26px}
-.hero h1 span{display:block}
-.team-phrase{color:var(--marker-red);font-family:var(--marker);padding-bottom:14px;position:relative;display:inline-block;font-size:clamp(24px,4vw,38px)}
-.hero-underline{width:100%;height:24px;position:absolute;bottom:2px;left:0}
+.hero{padding:30px 0 30px;position:relative}
+.hero h1{font-family:var(--marker);font-size:clamp(58px,12.5vw,124px);line-height:1.1;transform:rotate(-1deg);margin-top:18px;letter-spacing:-.015em}
+.hero h1 .line1{display:block;color:var(--pencil)}
+.team-phrase{color:var(--marker-red);font-family:var(--marker);padding-bottom:22px;position:relative;display:block;font-size:inherit;line-height:1.12}
+.hero-underline{width:100%;height:30px;position:absolute;bottom:4px;left:0}
 .hero-underline path{stroke-dasharray:none}
-.hero-meta-row{display:flex;flex-wrap:wrap;gap:14px 30px;margin-top:40px;padding:14px 16px;border:1.5px dashed var(--erased);border-radius:7px 3px 12px 4px/4px 9px 3px 11px;background:var(--scrap);transform:rotate(-.4deg)}
-.meta-chip{font-size:20px;color:var(--pencil)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px;padding-top:30px;position:relative}
+.hero-stats::before{content:"";border-top:1.8px dashed var(--ballpoint-blue);border-radius:30% 10% 25% 50%;width:100%;height:14px;position:absolute;top:0;left:0;transform:rotate(-.3deg);opacity:.6}
+.stat-value{font-family:var(--marker);font-size:clamp(30px,4.2vw,44px);font-weight:700;line-height:1.1;color:var(--pencil)}
+.stat-label{font-size:19px;color:var(--muted-ink);margin-top:5px}
+.stat-trend{color:var(--ballpoint-blue);font-size:16px;margin-top:2px}
+.hero-meta-row{display:flex;flex-wrap:wrap;gap:14px 30px;margin-top:40px;padding:16px 18px;border:1.5px dashed var(--erased);border-radius:7px 3px 12px 4px/4px 9px 3px 11px;background:var(--scrap);transform:rotate(-.4deg)}
+.meta-chip{font-size:19px;color:var(--pencil)}
 .meta-chip b{color:var(--ballpoint-blue);font-weight:700}
 .hero-actions{flex-wrap:wrap;align-items:center;gap:18px 25px;display:flex;margin-top:38px;position:relative}
 .button{border:2.5px solid var(--pencil);border-radius:var(--radius);background:var(--scrap);box-shadow:3px 4px 0 var(--pencil);text-align:center;line-height:1.2;font-size:22px;transition:transform .1s,box-shadow .1s;padding:14px 20px 13px;text-decoration:none;display:inline-block;position:relative;transform:rotate(-1.1deg)}
@@ -254,7 +259,14 @@ footer:before{content:"";border-top:2px solid var(--pencil);border-radius:27% 11
 <div class="sheet" id="top">
 <section class="hero">
   <span class="section-note">收生中 ・ 設有試堂</span>
-  <h1>Just Play<br><span class="team-phrase">The Guitar<svg class="hero-underline" viewBox="0 0 400 30" preserveAspectRatio="none" fill="none"><path d="M2 22 C 80 4, 160 26, 250 14 S 380 18, 398 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span></h1>
+  <h1><span class="line1">Just Play</span><span class="team-phrase">The Guitar<svg class="hero-underline" viewBox="0 0 400 30" preserveAspectRatio="none" fill="none"><path d="M2 22 C 80 4, 160 26, 250 14 S 380 18, 398 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span></h1>
+
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-value">9 年</div><div class="stat-label">教學經驗</div><div class="stat-trend">新手至進階</div></div>
+    <div class="stat"><div class="stat-value">10+ 款</div><div class="stat-label">親手挑選結他</div><div class="stat-trend">同價位最滿意</div></div>
+    <div class="stat"><div class="stat-value">個人/2人</div><div class="stat-label">小班教學</div><div class="stat-trend">度身訂造進度</div></div>
+    <div class="stat"><div class="stat-value">100%</div><div class="stat-label">上手試琴</div><div class="stat-trend">荔枝角 Studio</div></div>
+  </div>
 
   <div class="hero-meta-row">
     <span class="meta-chip">📍 上堂地點 <b>太子／荔枝角</b></span>
