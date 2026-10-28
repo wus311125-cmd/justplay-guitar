@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Just Play The Guitar — 結他課程 · 指彈 · 伴奏 · 樂理</title>
-<meta name="description" content="結他課程 ｜指彈 ｜ 伴奏 ｜樂理 ｜學結他。小組班、個人班、試堂。JP 結他自家手工品牌零售。">
+<title>Just Play The Guitar — 結他課程 ・ 指彈 ・ 結他零售 ｜ JP 自家手工品牌</title>
+<meta name="description" content="太子/荔枝角結他課程：個人/2人課堂、9年教學經驗、指彈/伴奏/樂理/編譜/考試，設有試堂。另有 JP 結他自家手工品牌零售，荔枝角永康街永康中心7樓，親臨試琴。">
+<meta property="og:title" content="Just Play The Guitar — 結他課程 ・ JP 自家手工品牌">
+<meta property="og:description" content="個人/2人結他課堂（太子/荔枝角）・ 9年教學經驗 ・ 試堂可約 ・ JP 自家手工品牌結他零售">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wus311125-cmd.github.io/justplay-guitar/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -19,7 +23,8 @@
   --accent-soft:rgba(200,155,90,.14);
   --text:#F0E9DD;
   --muted:#8A8377;
-  --wood:#6B4F2A;
+  --ok:#6BA368;
+  --warn:#C89B5A;
   --serif:'Playfair Display','Noto Serif TC',serif;
   --sans:'Noto Sans TC',sans-serif;
   --mono:'IBM Plex Mono',monospace;
@@ -62,6 +67,8 @@ nav.scrolled{border-bottom-color:var(--line);background:rgba(14,13,11,.95)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(200,155,90,.25)}
 .btn-ghost{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 2.2rem;border:1px solid var(--line);color:var(--text);font-size:.9rem;letter-spacing:.1em;transition:border-color .25s,color .25s}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-wa{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 2.2rem;background:#1F2E1B;border:1px solid #3E5C35;color:#C9E0B8;font-size:.9rem;letter-spacing:.1em;transition:background .25s,border-color .25s}
+.btn-wa:hover{background:#2A3F24;border-color:var(--accent)}
 .hero-meta{display:flex;flex-wrap:wrap;gap:2.5rem;margin-top:4.5rem;padding-top:2rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--muted)}
 .hero-meta b{display:block;font-family:var(--sans);font-weight:400;color:var(--text);font-size:.9rem;letter-spacing:.02em;margin-top:.3rem}
 
@@ -71,6 +78,19 @@ section{padding:clamp(5rem,10vw,8rem) var(--pad);position:relative}
 .section-title{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.2;margin-bottom:1.2rem}
 .section-desc{color:var(--muted);max-width:36rem;font-size:1rem;margin-bottom:3.5rem}
 
+/* ============ BRAND STORY ============ */
+#story{background:linear-gradient(180deg,var(--bg),#131009)}
+.story-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;max-width:1100px;margin:0 auto}
+.story-photo{aspect-ratio:4/3;background:linear-gradient(135deg,#241C12,#17140F 55%,#2A2116);position:relative;overflow:hidden}
+.story-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.story-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(14,13,11,.6))}
+.story-body .quote{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2rem);font-style:italic;line-height:1.5;margin-bottom:1.8rem;color:var(--text)}
+.story-body .quote b{color:var(--accent)}
+.story-list{list-style:none}
+.story-list li{padding:.7rem 0 .7rem 1.6rem;position:relative;color:#D6CFC0;font-size:.95rem}
+.story-list li::before{content:'—';position:absolute;left:0;color:var(--accent)}
+.story-list li b{color:var(--text);font-weight:500}
+
 /* ============ COURSES ============ */
 #courses{background:var(--surface)}
 .courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
@@ -78,13 +98,16 @@ section{padding:clamp(5rem,10vw,8rem) var(--pad);position:relative}
 .course-card:hover{border-color:var(--accent);transform:translateY(-4px)}
 .course-card .num{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.16em}
 .course-card h3{font-family:var(--serif);font-size:1.5rem;font-weight:600;margin:.6rem 0 1rem}
-.course-price{font-family:var(--serif);font-size:1.9rem;color:var(--accent);margin-bottom:1.4rem}
+.course-price{font-family:var(--serif);font-size:1.5rem;color:var(--accent);margin-bottom:1.4rem}
 .course-price small{font-family:var(--sans);font-size:.78rem;color:var(--muted);letter-spacing:.06em}
 .course-card ul{list-style:none;margin-bottom:2rem}
 .course-card li{padding:.5rem 0 .5rem 1.3rem;position:relative;font-size:.92rem;color:#D6CFC0}
 .course-card li::before{content:'—';position:absolute;left:0;color:var(--accent);opacity:.8}
+.course-card li b{color:var(--text);font-weight:500}
 .course-card .btn-card{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;padding:.85rem 1.6rem;border:1px solid var(--accent);color:var(--accent);font-size:.85rem;letter-spacing:.12em;transition:background .25s,color .25s}
 .course-card .btn-card:hover{background:var(--accent);color:#0E0D0B}
+.course-note{margin-top:2.5rem;padding:1.5rem 1.8rem;border:1px solid var(--line);background:var(--surface-2);font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.8rem 2rem;align-items:center}
+.course-note b{color:var(--accent);font-weight:500}
 .course-content{margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--line)}
 .course-content h4{font-family:var(--serif);font-size:1.1rem;margin-bottom:1.4rem;color:var(--text)}
 .content-tags{display:flex;flex-wrap:wrap;gap:.7rem}
@@ -97,10 +120,13 @@ section{padding:clamp(5rem,10vw,8rem) var(--pad);position:relative}
 .shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem}
 .product{background:var(--surface);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;transition:border-color .3s,transform .3s}
 .product:hover{border-color:var(--accent);transform:translateY(-4px)}
-.product-photo{aspect-ratio:4/3;background:linear-gradient(135deg,#241C12,#17140F 55%,#2A2116);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-/* 真實 IG 相片:衹要喺 <img> 填 data-real-src,JS 會幫你換入真實相,並隱藏漸層 */
-.product-photo .silhouette{color:rgba(200,155,90,.22);font-size:4rem;line-height:1;user-select:none}
-.product-photo img.real-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;background:var(--surface)}
+.product-photo{aspect-ratio:4/3;background:linear-gradient(135deg,#241C12,#17140F 55%,#2A2116);position:relative;overflow:hidden}
+.product-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.product-badge{position:absolute;top:1rem;left:1rem;z-index:2;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;padding:.4rem .8rem}
+.badge-new{background:var(--accent);color:#0E0D0B}
+.badge-stock{background:rgba(14,13,11,.85);color:var(--ok);border:1px solid var(--ok)}
+.badge-custom{background:rgba(14,13,11,.85);color:var(--accent);border:1px solid var(--accent)}
+.badge-sold{background:rgba(14,13,11,.85);color:#A06060;border:1px solid #A06060}
 .product-body{padding:1.8rem 1.6rem 2rem;display:flex;flex-direction:column;flex:1}
 .product-body .model{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;color:var(--accent)}
 .product-body h3{font-family:var(--serif);font-size:1.25rem;font-weight:600;margin:.5rem 0 .4rem}
@@ -118,7 +144,6 @@ section{padding:clamp(5rem,10vw,8rem) var(--pad);position:relative}
 #interact{background:linear-gradient(180deg,var(--bg),#131009 60%,var(--bg));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .interact-wrap{max-width:760px;margin:0 auto;text-align:center}
 .interact-wrap .quote{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,3.5vw,2.3rem);color:var(--text);line-height:1.5;margin:1.5rem 0 1rem}
-.interact-wrap .secret{font-family:var(--mono);color:var(--accent);letter-spacing:.08em;font-size:.9rem}
 .interact-wrap p{color:var(--muted);font-size:.95rem;max-width:30rem;margin:1.2rem auto 0}
 .secret-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;margin-top:2.6rem}
 .secret-card{border:1px solid var(--line);padding:1.5rem 2rem;min-width:200px;background:var(--surface)}
@@ -159,6 +184,15 @@ section{padding:clamp(5rem,10vw,8rem) var(--pad);position:relative}
 .form-success a{color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:1px}
 #signup .form-card form:has(.form-success.show) > *:not(.form-success){display:none}
 
+/* ============ LOCATION BANNER ============ */
+#visit{border-top:1px solid var(--line);background:var(--surface)}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1000px;margin:0 auto}
+.visit-card{border:1px solid var(--line);padding:2rem 2.2rem;background:var(--surface-2)}
+.visit-card .vc-k{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;color:var(--accent);margin-bottom:.6rem}
+.visit-card h3{font-family:var(--serif);font-size:1.3rem;margin-bottom:.8rem}
+.visit-card p{color:#D6CFC0;font-size:.92rem;line-height:1.8}
+.visit-card .vc-link{margin-top:1.2rem;display:inline-flex;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:2px;font-size:.85rem;letter-spacing:.06em}
+
 /* ============ FOOTER ============ */
 footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem}
 .footer-brand{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);letter-spacing:.04em}
@@ -178,6 +212,8 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
   .nav-links.open{transform:none}
   .nav-links li{width:100%}
   .signup-grid{grid-template-columns:1fr}
+  .visit-grid{grid-template-columns:1fr}
+  .story-wrap{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .hero-meta{gap:1.5rem}
 }
@@ -198,8 +234,9 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
     <span class="brand-name">Just Play The Guitar</span>
   </a>
   <ul class="nav-links" id="navlinks">
+    <li><a href="#story">品牌故事</a></li>
     <li><a href="#courses">課程</a></li>
-    <li><a href="#shop">商品</a></li>
+    <li><a href="#shop">結他</a></li>
     <li><a href="#signup">報名</a></li>
     <li><a class="btn-dm" href="https://www.instagram.com/justplaythe_guitar/" target="_blank" rel="noopener">DM 試堂</a></li>
   </ul>
@@ -209,63 +246,88 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
   <div class="hero-inner">
-    <span class="tag"><span class="dot"></span> 收生中 · 試堂可約</span>
+    <span class="tag"><span class="dot"></span> 收生中 ・ 設有試堂 ・ 9年教學經驗</span>
     <h1>Just Play<br>The <span class="accent">Guitar</span></h1>
-    <p class="hero-sub">結他課程 ｜ 指彈 ｜ 伴奏 ｜ 樂理 ｜ 編譜。新手到進階，手把手帶你彈出第一首歌。</p>
+    <p class="hero-sub">個人／2人 結他課堂 ｜ 指彈 ｜ 伴奏 ｜ 樂理 ｜ 編譜 ｜ 考試。新手到進階，手把手帶你彈出第一首歌。</p>
     <div class="hero-actions">
-      <a href="#signup" class="btn-primary">開始試堂</a>
+      <a href="#signup" class="btn-primary">預約試堂</a>
       <a href="#shop" class="btn-ghost">睇結他</a>
+      <a class="btn-wa" href="https://www.instagram.com/justplaythe_guitar/" target="_blank" rel="noopener">IG DM 查詢</a>
     </div>
     <div class="hero-meta">
-      <div>課程地點<b>牛頭角 · 1208 Studio</b></div>
-      <div>小組班<b>3–4 人小班教學</b></div>
-      <div>程度<b>新手至進階</b></div>
+      <div>上堂地點<b>太子／荔枝角</b></div>
+      <div>課程形式<b>個人／2人小班</b></div>
+      <div>程度<b>新手至進階・考試</b></div>
     </div>
   </div>
 </header>
+
+<!-- ============ BRAND STORY ============ -->
+<section id="story">
+  <div class="story-wrap">
+    <div class="story-photo reveal">
+      <img src="images/jp/jp_7.jpg" alt="JP 結他 手工製作">
+    </div>
+    <div class="story-body reveal">
+      <div class="section-label">OUR STORY — 品牌故事</div>
+      <p class="quote">「追求高性價比——<b>每一支結他，都係我哋親自試過、同價位最滿意</b>先會賣。」</p>
+      <ul class="story-list">
+        <li><b>自家手工品牌</b>：精選德國雲杉、印度玫瑰木、非洲桃花芯</li>
+        <li><b>款式精簡 10 幾款</b>：唔堆貨，每一支都係精挑細選</li>
+        <li><b>新手第一支結他</b>、想升級但預算有限——揀啱你最啱嘅琴</li>
+        <li><b>歡迎預約</b>，親臨上手試琴再決定</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <!-- ============ COURSES ============ -->
 <section id="courses">
   <div class="section-label">COURSES — 課程</div>
   <h2 class="section-title reveal">搵啱你嘅上堂方式</h2>
-  <p class="section-desc reveal">唔理你係零基礎想入門，定係自學到平台期想突破，都有適合你嘅班。</p>
+  <p class="section-desc reveal">9 年教學經驗。唔理你係零基礎想入門，定係自學到平台期想突破，都有適合你嘅上堂方式。</p>
 
   <div class="courses-grid">
     <div class="course-card reveal">
       <span class="num">01</span>
-      <h3>小組班</h3>
-      <div class="course-price">$1080<small> / 8 堂</small></div>
+      <h3>個人課堂</h3>
+      <div class="course-price">一對一<small> 度身訂造進度</small></div>
       <ul>
-        <li>3–4 人小班，氣氛輕鬆</li>
-        <li>學習伴奏 chord、睇譜</li>
-        <li>入門 Fingerstyle 歌</li>
-        <li>平日、週末均有班，一星期一堂</li>
-        <li>手把手教學，仲識到同好</li>
+        <li>針對你嘅弱點逐個擊破</li>
+        <li>學習進度完全屬於你</li>
+        <li>時間彈性，配合你生活</li>
+        <li>適合想快上手、想突破平台期</li>
       </ul>
-      <a href="#signup" class="btn-card">報名留位</a>
+      <a href="#signup" class="btn-card">查詢詳情</a>
     </div>
 
     <div class="course-card reveal">
       <span class="num">02</span>
-      <h3>個人班</h3>
-      <div class="course-price">彈性收費<small> 按程度 / 堂數</small></div>
+      <h3>二人課堂</h3>
+      <div class="course-price">2人同行<small> 一齊學更有動力</small></div>
       <ul>
-        <li>本身有底、想快速上手進步</li>
-        <li>度身訂造學習進度</li>
-        <li>針對你的弱項逐個擊破</li>
-        <li>時間彈性，配合你生活</li>
+        <li>叫埋朋友一齊上，互相鞭策</li>
+        <li>伴奏練習更方便(一個彈 chord 一個彈 melody)</li>
+        <li>氣氛輕鬆，唔怕尷</li>
+        <li>適合新手入門</li>
       </ul>
-      <a href="#signup" class="btn-card">查詢詳情</a>
+      <a href="#signup" class="btn-card">報名留位</a>
     </div>
+  </div>
+
+  <div class="course-note reveal">
+    <span>🔥 設有 <b>試堂</b>，有興趣就 DM 問多啲先決定</span>
+    <span>📍 上堂地點：<b>太子／荔枝角</b></span>
   </div>
 
   <div class="course-content reveal">
     <h4>課程內容</h4>
     <div class="content-tags">
       <span class="ctag">指彈 Fingerstyle</span>
-      <span class="ctag">伴奏 Rhythm / Skill</span>
+      <span class="ctag">伴奏 fill in / intro</span>
       <span class="ctag">樂理</span>
-      <span class="ctag">寫歌 / 編 Tab</span>
+      <span class="ctag">編譜 / 聽 Chord</span>
+      <span class="ctag">考試</span>
       <span class="ctag">試堂</span>
     </div>
   </div>
@@ -275,29 +337,29 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
 <section id="shop">
   <div class="shop-head">
     <div>
-      <div class="section-label">SHOP — 自家品牌結他</div>
-      <h2 class="section-title reveal">JP 結他 · 手工製作</h2>
+      <div class="section-label">SHOP — 結他零售</div>
+      <h2 class="section-title reveal">JP 結他 ・ 自家手工品牌</h2>
     </div>
-    <p class="section-desc reveal">結他零售 ｜ 自家手工品牌。精選木材、細緻鑲嵌、專業音色。由新手第一支到專業收藏。</p>
+    <p class="section-desc reveal">設有不同程度要求／價格嘅結他售賣。每支都親自試過、係同價位最滿意嘅型號。歡迎預約親臨試琴。</p>
   </div>
 
   <div class="shop-grid">
     <!-- ===== 產品 1: Randon AS-GC+ ===== -->
     <article class="product reveal">
-      <div class="product-photo" data-photo-slot="jp_1">
-        <span class="silhouette">♫</span>
-        <img class="real-photo" alt="Randon AS-GC+ 單板木吉他" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <div class="product-photo">
+        <span class="badge badge-stock">僅餘少量</span>
+        <img src="images/jp/jp_3.jpg" alt="Randon AS-GC+ 單板木吉他">
       </div>
       <div class="product-body">
         <span class="model">RANDON AS-GC+</span>
         <h3>41吋 GA 桶 缺角單板木吉他</h3>
         <div class="price">$1,399 <small>起</small></div>
-        <p>外型型格，指板「靈蛇」鑲嵌非常吸睛。歐洲雲杉單板面板，音色比合板更共鳴飽滿，手感易撳，適合新手練習首選。</p>
+        <p>外型型格，指板「靈蛇」鑲嵌非常吸睛。歐洲雲杉單板面板，音色比合板更共鳴飽滿，手感易撳，性價比極高嘅新手首選。</p>
         <ul class="spec-list">
           <li><span class="k">桶型</span><span class="v">41吋 Grand Auditorium 缺角</span></li>
           <li><span class="k">面板</span><span class="v">歐洲雲杉單板</span></li>
           <li><span class="k">背側板</span><span class="v">桃花芯木</span></li>
-          <li><span class="k">指板記號</span><span class="v">精緻「靈蛇」鑲嵌</span></li>
+          <li><span class="k">指板記號</span><span class="v">「靈蛇」鑲嵌</span></li>
           <li><span class="k">配件</span><span class="v">琴袋、撥片、調音器</span></li>
         </ul>
         <a class="btn-card" href="https://www.instagram.com/jp_guitarstudio_hk/" target="_blank" rel="noopener">查詢庫存</a>
@@ -306,31 +368,31 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
 
     <!-- ===== 產品 2: Randon RG-19SAC ===== -->
     <article class="product reveal">
-      <div class="product-photo" data-photo-slot="jp_2">
-        <span class="silhouette">♫</span>
-        <img class="real-photo" alt="Randon RG-19SAC 全單板木吉他" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <div class="product-photo">
+        <span class="badge badge-custom">全單板</span>
+        <img src="images/jp/jp_4.jpg" alt="Randon RG-19SAC 全單板木吉他">
       </div>
       <div class="product-body">
         <span class="model">RANDON RG-19SAC</span>
         <h3>41吋 GA 桶 缺角 全單板吉他</h3>
-        <div class="price">請 DM 查詢 <small>現貨價</small></div>
+        <div class="price">現貨價<small> DM 查詢</small></div>
         <p>全單板配置，音色共鳴厚實飽滿。指板「螢火蟲」鑲嵌細緻度極高，高端玫瑰木紋理配上專業做工，外型與音色兼備。</p>
         <ul class="spec-list">
           <li><span class="k">桶型</span><span class="v">41吋 GA 桶缺角</span></li>
           <li><span class="k">面板</span><span class="v">歐洲雲杉單板</span></li>
           <li><span class="k">背側板</span><span class="v">印度玫瑰木單板</span></li>
-          <li><span class="k">指板記號</span><span class="v">精緻「螢火蟲」鑲嵌</span></li>
+          <li><span class="k">指板記號</span><span class="v">「螢火蟲」鑲嵌</span></li>
           <li><span class="k">特色</span><span class="v">全單板 · 玫瑰木紋理</span></li>
         </ul>
-        <a class="btn-card" href="https://www.instagram.com/jp_guitarstudio_hk/" target="_blank" rel="noopener">查詢庫存</a>
+        <a class="btn-card" href="https://www.instagram.com/jp_guitarstudio_hk/" target="_blank" rel="noopener">查詢現貨</a>
       </div>
     </article>
 
     <!-- ===== 產品 3: 手工結他系列 ===== -->
     <article class="product reveal">
-      <div class="product-photo" data-photo-slot="jp_3">
-        <span class="silhouette">♫</span>
-        <img class="real-photo" alt="JP 自家手工結他" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <div class="product-photo">
+        <span class="badge badge-custom">HANDMADE</span>
+        <img src="images/jp/jp_5.jpg" alt="JP 自家手工結他">
       </div>
       <div class="product-body">
         <span class="model">JP HANDMADE</span>
@@ -350,18 +412,18 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
 
     <!-- ===== 產品 4: 更多型號 ===== -->
     <article class="product reveal">
-      <div class="product-photo" data-photo-slot="jp_4">
-        <span class="silhouette">…</span>
-        <img class="real-photo" alt="更多結他型號" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <div class="product-photo">
+        <span class="badge badge-new">NEW</span>
+        <img src="images/jp/jp_8.jpg" alt="更多結他型號">
       </div>
       <div class="product-body">
         <span class="model">MORE</span>
         <h3>更多型號</h3>
-        <div class="price">持續更新</div>
-        <p>陸續上架更多結他型號。想要嘅款冇出現？直接 DM 我哋，我哋幫你搵。</p>
+        <div class="price">款式精簡 10 幾款</div>
+        <p>每一支都係親自試過、同價位最滿意嘅型號。想要嘅款冇出現？直接 DM 我哋，我哋幫你搵。</p>
         <ul class="spec-list">
-          <li><span class="k">零售</span><span class="v">各品牌木結他</span></li>
-          <li><span class="k">服務</span><span class="v">推薦、試彈、保養</span></li>
+          <li><span class="k">零售</span><span class="v">不同程度要求／價位</span></li>
+          <li><span class="k">服務</span><span class="v">預約試琴、推薦</span></li>
           <li><span class="k">支援</span><span class="v">新手選購建議</span></li>
         </ul>
         <a class="btn-card" href="https://www.instagram.com/jp_guitarstudio_hk/" target="_blank" rel="noopener">DM 查詢</a>
@@ -370,7 +432,7 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
   </div>
 </section>
 
-<!-- ============ INTERACT ============ -->
+<!-- ============ INTERACT (留言密語) ============ -->
 <section id="interact">
   <div class="interact-wrap reveal">
     <div class="section-label">PLAY ALONG — 一齊玩</div>
@@ -383,7 +445,7 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
       </div>
       <div class="secret-card">
         <div class="sc-key">留言「冬天」</div>
-        <div class="sc-desc">Gordon Flanders 冬季譜</div>
+        <div class="sc-desc">冬季歌曲譜</div>
       </div>
     </div>
     <p class="secret" style="margin-top:2rem;font-family:var(--sans);letter-spacing:.05em">想攞譜？去 IG ➜ <a href="https://www.instagram.com/justplaythe_guitar/" target="_blank" rel="noopener" style="color:var(--accent)">@justplaythe_guitar</a></p>
@@ -398,22 +460,22 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
 
   <div class="signup-grid">
     <div class="signup-info reveal">
-      <h3>上堂地點</h3>
+      <h3>上堂詳情</h3>
       <div class="info-block">
-        <div class="k">STUDIO</div>
-        <div class="v">牛頭角創業街 36 號 華基中心 1208 Studio</div>
+        <div class="k">上堂地點</div>
+        <div class="v">太子／荔枝角（詳細地址報名後通知）</div>
       </div>
       <div class="info-block">
-        <div class="k">上堂時間</div>
-        <div class="v">一至日皆可，各班一星期一堂<br>（小組班 3–4 人，個人班彈性約時間）</div>
+        <div class="k">課程形式</div>
+        <div class="v">個人一對一 ／ 二人小班<br>試堂可約</div>
       </div>
       <div class="info-block">
         <div class="k">課程內容</div>
-        <div class="v">指彈 Fingerstyle ｜ 伴奏 Rhythm / Skill ｜ 樂理 ｜ 寫歌 / 編 Tab</div>
+        <div class="v">指彈 Fingerstyle ｜ 伴奏 fill in / intro ｜ 樂理 ｜ 編譜 / 聽 Chord ｜ 考試</div>
       </div>
       <div class="info-block">
-        <div class="k">適合</div>
-        <div class="v">任何程度學生、零基礎新手</div>
+        <div class="k">經驗</div>
+        <div class="v">9 年教學經驗，新手至進階都教</div>
       </div>
     </div>
 
@@ -444,8 +506,8 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
         <div class="form-group">
           <label>心儀課程</label>
           <div class="radios">
-            <label class="pill"><input type="radio" name="course" value="小組班" checked><span>小組班</span></label>
-            <label class="pill"><input type="radio" name="course" value="個人班"><span>個人班</span></label>
+            <label class="pill"><input type="radio" name="course" value="個人課堂" checked><span>個人</span></label>
+            <label class="pill"><input type="radio" name="course" value="二人課堂"><span>二人</span></label>
             <label class="pill"><input type="radio" name="course" value="試堂"><span>試堂</span></label>
             <label class="pill"><input type="radio" name="course" value="買結他"><span>買結他</span></label>
           </div>
@@ -466,9 +528,10 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
             <select id="want">
               <option value="" disabled selected>揀選方向</option>
               <option>指彈 Fingerstyle</option>
-              <option>伴奏 Chord</option>
+              <option>伴奏 Chord / fill in</option>
               <option>樂理</option>
-              <option>編譜 / 寫歌</option>
+              <option>編譜 / 聽 Chord</option>
+              <option>考試</option>
               <option>都未諗定</option>
             </select>
           </div>
@@ -478,7 +541,7 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
           <textarea id="msg" placeholder="想問嘅嘢 / 目標"></textarea>
         </div>
         <button type="submit" class="btn-submit">提交查詢</button>
-        <p class="form-note">提交後我哋會喺 IG DM 覆你，唔使你等。</p>
+        <p class="form-note">提交後我哋會喺 IG DM 覆你。想即刻傾?<br>IG：<a href="https://www.instagram.com/justplaythe_guitar/" target="_blank" rel="noopener" style="color:var(--accent)">@justplaythe_guitar</a></p>
 
         <div class="form-success" id="formSuccess">
           <div class="tick">✓</div>
@@ -486,6 +549,24 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
           <p>我哋會盡快經 IG DM 覆你。想即刻傾？<br>直接 DM &#64;<a href="https://www.instagram.com/justplaythe_guitar/" target="_blank" rel="noopener">justplaythe_guitar</a></p>
         </div>
       </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION / VISIT ============ -->
+<section id="visit">
+  <div class="visit-grid">
+    <div class="visit-card reveal">
+      <div class="vc-k">SHOWROOM — 試琴</div>
+      <h3>荔枝角 Studio</h3>
+      <p>荔枝角永康街 永康中心 7樓<br>設有不同程度要求／價格嘅結他。<br>歡迎預約親臨，上手試琴再決定。</p>
+      <a class="vc-link" href="https://www.instagram.com/jp_guitarstudio_hk/" target="_blank" rel="noopener">預約試琴 @jp_guitarstudio_hk</a>
+    </div>
+    <div class="visit-card reveal">
+      <div class="vc-k">LESSONS — 上堂</div>
+      <h3>太子／荔枝角上堂</h3>
+      <p>個人／2人 結他課堂<br>指彈 ・ 伴奏 ・ 樂理 ・ 編譜 ・ 考試<br>9年教學經驗，新手至進階。</p>
+      <a class="vc-link" href="https://www.instagram.com/justplaythe_guitar/" target="_blank" rel="noopener">IG DM 約試堂</a>
     </div>
   </div>
 </section>
@@ -499,9 +580,10 @@ footer{border-top:1px solid var(--line);padding:3.5rem var(--pad);display:flex;f
   <ul class="footer-links">
     <li><a href="https://www.instagram.com/justplaythe_guitar/" target="_blank" rel="noopener">課程 IG</a></li>
     <li><a href="https://www.instagram.com/jp_guitarstudio_hk/" target="_blank" rel="noopener">商品 IG</a></li>
+    <li><a href="https://www.instagram.com/justplaythe_guitar/" target="_blank" rel="noopener">IG DM</a></li>
     <li><a href="#signup">報名</a></li>
   </ul>
-  <p class="footer-copy">© 2026 Just Play The Guitar · JP 結他自家手工品牌</p>
+  <p class="footer-copy">© 2026 Just Play The Guitar ・ JP 結他自家手工品牌</p>
 </footer>
 
 <script>
@@ -529,28 +611,6 @@ const io = new IntersectionObserver((entries) => {
 }, {threshold: .12, rootMargin: '0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* ============ SWAP REAL PHOTOS ============ */
-/*
-  放真實相：喺下面 MAP 填返 IG 圖片 URL（或者之後俾我哋替換）。
-  揾到相之後,JS 自動將 <img> src 設做真實 URL,再 fade-in,
-  並隱藏底層嘅純色漸層,相片就係「特別放嘅一張」。
-*/
-const PHOTO_MAP = {
-  // 'jp_1': 'https://scontent.cdninstagram.com/...jpg',
-  // 'jp_2': 'https://scontent.cdninstagram.com/...jpg',
-  // 'jp_3': 'https://scontent.cdninstagram.com/...jpg',
-  // 'jp_4': 'https://scontent.cdninstagram.com/...jpg',
-};
-document.querySelectorAll('[data-photo-slot]').forEach(slot => {
-  const key = slot.dataset.photoSlot;
-  const url = PHOTO_MAP[key];
-  if (!url) return;
-  const img = slot.querySelector('img.real-photo');
-  if (!img) return;
-  img.addEventListener('load', () => { img.style.opacity = '1'; slot.querySelector('.silhouette').style.opacity = '0'; });
-  img.src = url;
-});
-
 /* ============ FORM SUBMIT → SUCCESS ============ */
 const form = document.getElementById('signupForm');
 const success = document.getElementById('formSuccess');
@@ -577,7 +637,6 @@ form.addEventListener('submit', (e) => {
     localStorage.setItem('jptg_signups', JSON.stringify(all));
   } catch (_) {}
 
-  // 同時開 IG DM，方便佢哋即刻傾
   success.classList.add('show');
   form.querySelectorAll('input,select,textarea,button').forEach(el => { el.disabled = true; });
 });
